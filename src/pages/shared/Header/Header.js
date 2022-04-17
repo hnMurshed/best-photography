@@ -8,7 +8,7 @@ const Header = () => {
     const user = false;
     return (
         <>
-            <Navbar collapseOnSelect sticky='top' expand="lg" bg="primary" variant="primary">
+            <Navbar collapseOnSelect sticky='top' expand="lg" variant="primary" className='header'>
                 <Container className='header-container'>
                     <Navbar.Brand as={Link} to="/" className='m-0'>
                         <span className='text-white fs-2 fw-bold'>Best Photography</span>
