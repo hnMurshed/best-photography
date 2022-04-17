@@ -1,3 +1,10 @@
+# Intallation list for this project
+
+* React Bootstrap
+* React Router
+* React Firebase Hooks
+* React Hot Toast
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
