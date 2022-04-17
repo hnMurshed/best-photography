@@ -6,7 +6,7 @@ const HomePage = () => {
     return (
         <div>
             <Benner></Benner>
-            {/* <Services></Services> */}
+            <Services></Services>
         </div>
     );
 };
