@@ -1,0 +1,42 @@
+.header-container {
+    position: relative;
+}
+#collasible-nav-dropdown {
+    padding: 0;
+    /* padding-top: 5px; */
+    margin-right: 4px;
+}
+.nav-link {
+    text-decoration: none;
+    color: white;
+}
+.header-btn-container {
+    gap: 5px;
+}
+.header-btn {
+    text-decoration: none;
+    background-color: white;
+    color: rgba(0, 0, 0, 0.6);
+    padding: 7px 20px;
+    border-radius: 6px;
+}
+.user-profile {
+    width: 40px;
+    border-radius: 50%;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .user-profile-div {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .user-profile-div {
+        top: 6px;
+    }
+}
