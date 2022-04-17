@@ -16,7 +16,7 @@ function App() {
         <Route path='home' element={<HomePage></HomePage>}></Route>
         <Route path='services/:serviceId' element={<ServiceDetail></ServiceDetail>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
-        {/* <Route path='register' element={<Register></Register>}></Route> */}
+        <Route path='register' element={<Register></Register>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
