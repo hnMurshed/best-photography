@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
 import { MenuIcon } from '@heroicons/react/solid';
 import auth from '../../../firebase.init';
 import './Header.css';
@@ -28,7 +29,7 @@ const Header = () => {
                     <div className='d-flex align-items-center user-profile-div'>
                         {
                             user && <NavDropdown id="collasible-nav-dropdown">
-                                <NavDropdown.Item as={Link} to="/login">
+                                <NavDropdown.Item onClick={() => signOut(auth)}>
                                     Sign Out
                                 </NavDropdown.Item>
                             </NavDropdown>
