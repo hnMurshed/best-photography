@@ -1,6 +1,6 @@
 import React from 'react';
-import Services from '../../Services/Services';
 import Benner from '../Benner/Benner';
+import Services from '../Services/Services';
 
 const HomePage = () => {
     return (

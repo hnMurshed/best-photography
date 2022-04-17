@@ -1,11 +1,13 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { MenuIcon } from '@heroicons/react/solid';
+import auth from '../../../firebase.init';
 import './Header.css';
 
 const Header = () => {
-    const user = false;
+    const [user] = useAuthState(auth)
     return (
         <>
             <Navbar collapseOnSelect sticky='top' expand="lg" variant="primary" className='header'>
