@@ -7,6 +7,7 @@ import PrivatePage from './pages/PrivatePage/PrivatePage';
 import ServiceDetail from './pages/ServiceDetail/ServiceDetail';
 import Footer from './pages/shared/Footer/Footer';
 import Header from './pages/shared/Header/Header';
+import About from './pages/About/About';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         }></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='register' element={<Register></Register>}></Route>
+        <Route path='about' element={<About></About>}></Route>
       </Routes>
       <Footer></Footer>
     </div>

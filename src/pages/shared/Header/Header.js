@@ -15,7 +15,7 @@ const Header = () => {
             <Navbar collapseOnSelect sticky='top' expand="lg" variant="primary" className='header'>
                 <Container className='header-container'>
                     <Navbar.Brand as={Link} to="/" className='m-0'>
-                        <span className='text-white fs-2 fw-bold'>Best Photography</span>
+                        <span className='brand-logo text-white fw-bold'>Best Photography</span>
                     </Navbar.Brand>
 
                     <Navbar.Collapse id="responsive-navbar-nav">

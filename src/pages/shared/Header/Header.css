@@ -4,6 +4,9 @@
 .header-container {
     position: relative;
 }
+.brand-logo {
+    font-size: 24px;
+}
 #collasible-nav-dropdown {
     padding: 0;
     /* padding-top: 5px; */
@@ -36,6 +39,11 @@
         position: absolute;
         right: 0;
         top: 0;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .brand-logo {
+        font-size: 18px;
     }
 }
 @media only screen and (max-width: 480px) {
