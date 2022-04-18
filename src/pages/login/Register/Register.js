@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import SocialButtons from '../SocialButtons/SocialButtons';
 // import './Register.css';
 
 const Register = () => {
@@ -85,7 +86,7 @@ const Register = () => {
             </form>
             <p>Already have an account? <Link to='/login' className='text-decoration-none'>Please Login</Link></p>
             {errorElement}
-            {/* <SocialButtons></SocialButtons> */}
+            <SocialButtons></SocialButtons>
         </div>
     );
 };
