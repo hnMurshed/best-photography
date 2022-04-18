@@ -1,3 +1,4 @@
+import { faL } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useRef, useState } from 'react';
 import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
@@ -6,7 +7,7 @@ import auth from '../../../firebase.init';
 
 const Register = () => {
     const [isChecked, setIsChecked] = useState(false);
-    
+    const [passwordMatched, setPasswordMatched] = useState(true);
 
     // useRef to get input values
     const nameRef = useRef('');
@@ -46,7 +47,8 @@ const Register = () => {
         const confirmPassword = event.target.confirmPassword.value;
 
         if (password !== confirmPassword) {
-            errorElement = <p className='text-danger'>Password didn't match, pls try again!</p>
+            setPasswordMatched(false);
+            // errorElement = <p className='text-danger'>Password didn't match, pls try again!</p>
             return;
         }
         await createUserWithEmailAndPassword(email, password);
@@ -66,12 +68,15 @@ const Register = () => {
                 </div>
                 <div className="form-group">
                     <label className='' htmlFor="new-password">Set Password</label>
-                    <input ref={passwordRef} className='form-control' type="password" name="password" id="new-password" placeholder='Set password' required />
+                    <input ref={passwordRef} className={`form-control ${passwordMatched ? '' : 'border-danger'}`} type="password" name="password" id="new-password" placeholder='Set password' required />
                 </div>
                 <div className="form-group">
                     <label className='' htmlFor="conf-password">Confirm Password</label>
-                    <input ref={confirmPasswordRef} className='form-control' type="password" name="confirmPassword" id="conf-password" placeholder='Confirm password' required />
+                    <input ref={confirmPasswordRef} className={`form-control ${passwordMatched ? '' : 'border-danger'}`} type="password" name="confirmPassword" id="conf-password" placeholder='Confirm password' required />
                 </div>
+                {
+                    passwordMatched ? '' : <p className='text-danger'>Password didn't match, pls try again!</p>
+                }
                 <div className="form-group">
                     <input onClick={ () => setIsChecked(!isChecked)}  className={`me-2 ${isChecked ? 'text-primary' : ''}`} type="checkbox" name="terms" id="terms" />
                     <label className={isChecked ? 'text-primary' : ''} htmlFor="terms">Accept Terms and Conditions</label>
