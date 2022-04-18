@@ -25,7 +25,7 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
-            navigate(from, '/home');
+            navigate(from, {replace: true});
         }
     }, [user])
 

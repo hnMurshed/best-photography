@@ -13,7 +13,7 @@ const ServiceDetail = () => {
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
 
-    const [user] = useAuthState(auth);
+    const [user, loading, error] = useAuthState(auth);
 
     const getName = e => {
         setName(e.target.value);
@@ -36,6 +36,7 @@ const ServiceDetail = () => {
     return (
         <div className="form-container border border-2 my-5">
             <h3 className='text-center mb-4'>Your Details</h3>
+            <p>Please submit your details to confirm your booking</p>
             <form onSubmit={handleOnSubmit}>
                 <div className="form-group">
                     <label className='' htmlFor="name">Name</label>
@@ -54,7 +55,7 @@ const ServiceDetail = () => {
                     <input onBlur={getPhone} className='form-control' type="text" name="mobile" id="mobile" placeholder='Your Phone' required/>
                 </div>
                 <div className="error">
-                    {/* <p className='text-danger'>{error && error}</p> */}
+                    <p className='text-danger'>{error && error.message}</p>
                 </div>
                 <input className='submit-btn btn btn-primary text-white mt-4 w-100 border-0 rounded-3 py-2' type="submit" value="Confirm Booking" />
             </form>
