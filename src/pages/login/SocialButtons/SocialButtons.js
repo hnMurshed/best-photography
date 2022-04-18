@@ -24,8 +24,7 @@ const SocialButtons = () => {
 
     let errorElement;
     if (error || error2) {
-        console.log('error');
-        errorElement = <p className='text-danger'>{error.message || error2.message}</p>
+        errorElement = <p className='text-danger'>{error?.message || error2?.message}</p>
     }
 
     return (
