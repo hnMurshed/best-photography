@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 // import './Register.css';
 
 const Register = () => {
-    console.log(auth);
     const [isChecked, setIsChecked] = useState(false);
+    
 
     // useRef to get input values
     const nameRef = useRef('');
@@ -22,6 +22,7 @@ const Register = () => {
         loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+      const [updateProfile, updating] = useUpdateProfile(auth);
 
     useEffect(() => {
         if (user) {
@@ -32,25 +33,24 @@ const Register = () => {
     let errorElement;
     if (error) {
         errorElement = <div>
-            {/* <p className='text-danger'>{error}</p> */}
+            <p className='text-danger'>{error.message}</p>
         </div>
     }
 
-    const handleOnSubmit = (event) => {
+    const handleOnSubmit = async (event) => {
         event.preventDefault();
 
-        const name = event.target.name.value;
+        const displayName = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
         const confirmPassword = event.target.confirmPassword.value;
 
         if (password !== confirmPassword) {
-            errorElement = <div>
-                <p className='text-danger'>Password didn't match, pls try again!</p>
-            </div>
+            errorElement = <p className='text-danger'>Password didn't match, pls try again!</p>
             return;
         }
-        createUserWithEmailAndPassword(email, password);
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName });
     }
     return (
         <div className="form-container border border-2 my-5">
@@ -76,7 +76,7 @@ const Register = () => {
                     <input onClick={ () => setIsChecked(!isChecked)}  className={`me-2 ${isChecked ? 'text-primary' : ''}`} type="checkbox" name="terms" id="terms" />
                     <label className={isChecked ? 'text-primary' : ''} htmlFor="terms">Accept Terms and Conditions</label>
                 </div>
-                <input disabled={!isChecked} className='submit-btn text-white mt-4 w-100 border-0 rounded-3 py-2' type="submit" value="Register" />
+                <input disabled={!isChecked} style={{cursor: `${isChecked ? 'pointer' : 'not-allowed'}`}} className={`submit-btn btn btn-primary text-white mt-4 w-100 border-0 rounded-3 py-2`} type="submit" value="Register" />
             </form>
             <p>Already have an account? <Link to='/login' className='text-decoration-none'>Please Login</Link></p>
             {errorElement}

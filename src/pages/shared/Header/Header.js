@@ -9,6 +9,7 @@ import './Header.css';
 
 const Header = () => {
     const [user] = useAuthState(auth)
+    console.log(user)
     return (
         <>
             <Navbar collapseOnSelect sticky='top' expand="lg" variant="primary" className='header'>
@@ -21,7 +22,7 @@ const Header = () => {
                         <Nav className="mx-auto">
                             <Nav.Link as={Link} to="home">Home</Nav.Link>
                             <Nav.Link href="home#services">Services</Nav.Link>
-                            <Nav.Link href="home#experts">Experts</Nav.Link>
+                            <Nav.Link as={Link} to="blogs">Blogs</Nav.Link>
                             <Nav.Link as={Link} to="about">About</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
@@ -36,11 +37,16 @@ const Header = () => {
                         }
                         {
                             user ? <div>
-                                <span className='text-white'>{user.displayName}</span>
+                                <span className='text-white'>{user.displayName || user.email}</span>
                                 <img className='user-profile ms-2' src={user.photoURL} alt="" />
-                            </div> : <Nav.Link as={Link} to="login" className='p-0'>
+                            </div> : <>
+                            <Link to="login" className='py-2 px-4 bg-white rounded text-decoration-none me-2'>
                                 Login
-                            </Nav.Link>
+                            </Link>
+                            <Link to="register" className='py-2 px-4 bg-primary text-white text-decoration-none rounded'>
+                                Register
+                            </Link>
+                            </>
                         }
                         <Navbar.Toggle className='text-white' aria-controls="responsive-navbar-nav">
                             <MenuIcon width={32} height={32}></MenuIcon>

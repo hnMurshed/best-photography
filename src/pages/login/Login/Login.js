@@ -57,7 +57,7 @@ const Login = () => {
                     <label className='' htmlFor="password">Password</label>
                     <input onBlur={ e => setPassword(e.target.value)} className='form-control' type="password" name="password" id="password" placeholder='Enter your password' />
                 </div>
-                <input className='submit-btn text-white mt-4 w-100 border-0 rounded-3 py-2' type="submit" value="Login" />
+                <input className='submit-btn btn btn-primary text-white mt-4 w-100 border-0 rounded-3 py-2' type="submit" value="Login" />
             </form>
             <p>Don't have an account? <Link to='/register' className='text-decoration-none'>Please Register</Link></p>
             <p>Forgot password? <span onClick={resetPassword} className='text-decoration-none text-primary' style={{cursor: 'pointer'}}>Reset Password</span></p>
