@@ -4,6 +4,7 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import auth from '../../../firebase.init';
 import './Login.css';
 import toast, { Toaster } from 'react-hot-toast';
+import { Spinner } from 'react-bootstrap';
 
 const Login = () => {
     let navigate = useNavigate();
@@ -25,9 +26,10 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
-            navigate(from, {replace: true});
+            navigate(from, { replace: true });
         }
     }, [user])
+
 
     let errorElement;
     if (error) {
