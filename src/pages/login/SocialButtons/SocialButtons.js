@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './SocialButtons.css';
 import googleLogo from '../../../images/icon/google-logo.png';
 import facebookLogo from '../../../images/icon/facebook-logo.png';
 import githubLogo from '../../../images/icon/github-logo.png';
 import { useAuthState, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SocialButtons = () => {
+    const navigate = useNavigate();
+    let location = useLocation();
+
+    let from = location.state?.from?.pathname || "/";
+
     const [signInWithGithub, user, loading, error] = useSignInWithGithub(auth);
     const [signInWithGoogle, user2, loading2, error2] = useSignInWithGoogle(auth);
+
+    useEffect(() => {
+        if (user || user2) {
+            navigate(from, {replace: true});
+        }
+    }, [user, user2])
 
     let errorElement;
     if (error || error2) {

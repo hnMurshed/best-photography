@@ -5,6 +5,7 @@ import auth from '../../../firebase.init';
 import './Login.css';
 import toast, { Toaster } from 'react-hot-toast';
 import { Spinner } from 'react-bootstrap';
+import SocialButtons from '../SocialButtons/SocialButtons';
 
 const Login = () => {
     let navigate = useNavigate();
@@ -69,7 +70,7 @@ const Login = () => {
             </form>
             <p>Don't have an account? <Link to='/register' className='text-decoration-none'>Please Register</Link></p>
             <p>Forgot password? <span onClick={resetPassword} className='text-decoration-none text-primary' style={{ cursor: 'pointer' }}>Reset Password</span></p>
-            {/* <SocialButtons></SocialButtons> */}
+            <SocialButtons></SocialButtons>
         </div>
     )
 };
