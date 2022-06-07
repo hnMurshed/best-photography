@@ -5,7 +5,7 @@ const Blogs = () => {
         <div className='container py-5'>
             <h2 className='text-center mb-4'>Blogs</h2>
 
-            <div class="d-flex">
+            <div class="d-flex flex-column flex-md-row g-4 " style={{gap: '20px'}}>
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title mb-3">What other services does firebase provide other than authentication?</h5>

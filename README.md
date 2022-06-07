@@ -3,6 +3,13 @@
 Please have a look at my project
 (https://best-photography-by-murshedul.web.app/)
 
+# What I have done in this project
+
+* home page with services
+* Checkout page wraped with RequredAut page
+* logo and sign up form
+* implement firebase authentication
+
 # Intallation list for this project
 
 * React Bootstrap
